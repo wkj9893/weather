@@ -37,7 +37,7 @@ export default function Home() {
     async function get_weather(city) {
         try {
             const response1 = await axios.get(
-                "http://api.openweathermap.org/data/2.5/weather?q=" +
+                "https://api.openweathermap.org/data/2.5/weather?q=" +
                     city +
                     "&appid=" +
                     APIkey +
@@ -46,7 +46,7 @@ export default function Home() {
 
             if (response1.status == 200) {
                 const response2 = await axios.get(
-                    `http://api.openweathermap.org/data/2.5/air_pollution?lat=${response1.data.coord.lat}&lon=${response1.data.coord.lon}&appid=${APIkey}`
+                    `https://api.openweathermap.org/data/2.5/air_pollution?lat=${response1.data.coord.lat}&lon=${response1.data.coord.lon}&appid=${APIkey}`
                 );
                 if (response2.status == 200) {
                     setPm2_5(response2.data.list[0].components.pm2_5 + "μg/m3");
